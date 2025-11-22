@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.level {
+    margin: 5px;
+    width: 80%;
+    border: 1px solid #444444;
+    border-radius: 7px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.level:hover {
+    background-color: #dadada;
+}
+
+.level-points {
+    font-size: 14px;
+    font-weight: normal;
+    margin-left: 3px;
+}
