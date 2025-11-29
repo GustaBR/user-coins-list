@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <%- include("./partials/head.ejs") %>
+
+<body>
+    <main> 
+            <% if (levels.length > 0) { %>  
+                <div id="list"> 
+                <% levels.forEach((level) => { %>  
+                    <div class="level">
+                        <a href="/levels/<%= level.Position %>">
+                            <h2> <%= level.Level %>
+                                <span class="level-points"> <%= level.Points %> </span>
+                            </h2>
+                        </a>
+                        <p> <%= level.Creator %> </p>
+                    </div>
+                <% }); %>
+                </div>
+            <% } %>
+    </main>
+
+</body>
+</html>
