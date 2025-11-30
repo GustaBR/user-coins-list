@@ -4,21 +4,25 @@
     <%- include("./partials/head.ejs") %>
 
 <body>
+
+    <nav>
+        <h1>User Coin List</h1>
+        <a href="/leaderboard">Leaderboard</a>
+    </nav>
+
     <main> 
-            <% if (levels.length > 0) { %>  
-                <div id="list"> 
-                <% levels.forEach((level) => { %>  
-                    <div class="level">
-                        <a href="/levels/<%= level.Position %>">
-                            <h2> <%= level.Level %>
-                                <span class="level-points"> <%= level.Points %> </span>
-                            </h2>
-                        </a>
+        <% if (levels.length > 0) { %>   
+            <% levels.forEach((level) => { %>  
+                <a href="/levels/<%= level.Position %>">
+                    <div class="level-card">
+                        <h2><%= level.Position %>. <%= level.Level %>
+                            <span class="level-points"> <%= level.Points %> </span>
+                        </h2>
                         <p> <%= level.Creator %> </p>
                     </div>
-                <% }); %>
-                </div>
-            <% } %>
+                </a>
+            <% }); %>
+        <% } %>
     </main>
 
 </body>
