@@ -13,12 +13,12 @@
     <main> 
         <% if (levels.length > 0) { %>   
             <% levels.forEach((level) => { %>  
-                <a href="/levels/<%= level.Position %>">
+                <a href="/levels/<%= level.position %>">
                     <div class="level-card">
-                        <h2><%= level.Position %>. <%= level.Level %>
-                            <span class="level-points"> <%= level.Points %> </span>
+                        <h2><%= level.position %>. <%= level.level %>
+                            <span class="level-points"> <%= level.points %> </span>
                         </h2>
-                        <p> <%= level.Creator %> </p>
+                        <p> <%= level.creator %> </p>
                     </div>
                 </a>
             <% }); %>

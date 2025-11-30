@@ -7,7 +7,7 @@ const getAllLevels = (req, res) => {
 const getLevel = (req, res) => {
     const id = req.params.id;
     Level.forEach(level => {
-        if (level.Position == id) {
+        if (level.position == id) {
             console.log(level);
             res.render("level", { level });
         }
