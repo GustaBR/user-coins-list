@@ -5,6 +5,7 @@ const morgan = require("morgan");
 
 // Routes
 const levelRoutes = require("./routes/levelRoutes");
+const leaderboardRoutes = require("./routes/leaderboardRoutes");
 
 const app = express();
 app.set("view engine", "ejs");
@@ -22,6 +23,8 @@ app.listen(PORT, () => {
 });
 
 app.use("/levels", levelRoutes);
+
+app.use("/leaderboard", leaderboardRoutes);
 
 app.get("/", (req, res) => {
     res.redirect("/levels");

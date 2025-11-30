@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <%- include("./partials/head.ejs") %>
+
+<body>
+
+    <%- include("./partials/nav.ejs") %>
+
+    <main>
+        <% players.forEach((player) => { %>
+            <div class="player-card">
+                <p><%= player.name %></p>
+            </div>
+        <% }); %>
+    </main>
+
+</body>
+</html>
