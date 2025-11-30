@@ -2,25 +2,31 @@
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
+const mongoose = require("mongoose");
 
 // Routes
 const levelRoutes = require("./routes/levelRoutes");
 const leaderboardRoutes = require("./routes/leaderboardRoutes");
 
 const app = express();
+
+require("dotenv").config();
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(cors());
-
-const PORT = 3000;
 
 // Middleware
 app.use(express.static("public"));
 app.use(morgan("dev"));
 
-app.listen(PORT, () => {
-    console.log("Server running on port", PORT);
-});
+// Development variables
+const PORT = 3000;
+const db_URI = process.env.db_URI;
+
+// Mongo connection
+mongoose.connect(db_URI)
+  .then(() => app.listen(PORT, () => console.log(`Server running on port ${PORT}`)))
+  .catch((err) => console.log(err));
 
 app.use("/levels", levelRoutes);
 

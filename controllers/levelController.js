@@ -1,17 +1,22 @@
-const Level = require("../models/levels");
+const Level = require("../models/Level");
 
-const getAllLevels = (req, res) => {
-    res.render("index", { levels: Level });
+const getAllLevels = async (req, res) => {
+    try {
+        const levels = await Level.find();
+        res.render("index", { levels });
+    } catch (err) {
+        console.error(err);
+    }
 }
 
-const getLevel = (req, res) => {
+const getLevel = async (req, res) => {
     const id = req.params.id;
-    Level.forEach(level => {
-        if (level.position == id) {
-            console.log(level);
-            res.render("level", { level });
-        }
-    });
+    try {
+        const level = await Level.findById(id);
+        res.render("level", { level });
+    } catch (err) {
+        console.error(err);
+    }
 }
 
 module.exports = {

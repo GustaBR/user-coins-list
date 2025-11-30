@@ -1,7 +1,12 @@
-const Player = require("../models/players.json");
+const Player = require("../models/Player");
 
-const getLeaderboard = (req, res) => {
-    res.render("leaderboard", { players: Player });
+const getLeaderboard = async (req, res) => {
+    try {
+        const players = await Player.find();
+        res.render("leaderboard", { players });
+    } catch (err) {
+        console.error(err)
+    }
 }
 
 module.exports = {

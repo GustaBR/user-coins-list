@@ -10,10 +10,10 @@
     <main> 
         <% if (levels.length > 0) { %>   
             <% levels.forEach((level) => { %>  
-                <a href="/levels/<%= level.position %>">
+                <a href="/levels/<%= level._id %>">
                     <div class="level-card">
-                        <h2><%= level.position %>. <%= level.level %>
-                            <span class="level-points"> <%= level.points %> </span>
+                        <h2><%= level.position %>. <%= level.name %>
+                            <span class="level-points"> <%= level.points %> points</span>
                         </h2>
                         <p> <%= level.creator %> </p>
                     </div>
