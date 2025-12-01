@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const levelSchema = mongoose.Schema({
+const levelSchema = new mongoose.Schema({
     position: {
         type: Number,
         required: true,

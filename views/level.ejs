@@ -8,6 +8,9 @@
 <body>
     <main>
         <%= level.position %> - <%= level.name %>
+        <% completions[0].players.forEach((player) => { %>
+            <%= player.name %>
+        <% }); %>
     </main>
 </body>
 </html>
