@@ -8,17 +8,17 @@
     <%- include("./partials/nav.ejs") %>
 
     <main>
-        <div id="level-content">
-            <header id="level-header">
+        <div class="page-content">
+            <header class="page-header">
                 <h2><%= level.position %> - <%= level.name %></h2>
                 <p><%= level.creator %> - <%= level.points %> points</p>
             </header>
 
-            <section id="completions-card">
+            <section class="page-section">
                 <h3><%= completions[0].players.length %> Records</h3>
                 <ul>
                     <% completions[0].players.forEach((player) => { %>
-                        <li><%= player.name %></li>
+                        <a href="/players/<%= player.name %>"><li><%= player.name %></li></a>
                     <% }); %>
                 </ul>
             </section>

@@ -29,7 +29,7 @@
     margin-left: 3px;
 }
 
-#level-content {
+.page-content {
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -39,29 +39,29 @@
     padding: 10px;
 }
 
-#level-header {
+.page-header {
     text-align: center;
     padding: 10px 50px;
     border: 1px solid black;
 }
 
-#level-header h2 {
+.page-header h2 {
     font-size: 3rem;
 }
 
-#completions-card {
+.page-section {
     margin-top: 5px;
 }
 
-#completions-card h3 {
+.page-section h3 {
     font-size: 2rem;
 }
 
-#completions-card ul {
+.page-section ul {
     font-size: 1.5rem;
 }
 
-#completions-card li {
+.page-section li {
     border-bottom: 1px solid black;
     width: fit-content;
     margin: 5px;
