@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= level.position %> - <%= level.name %></title>
-</head>
+
+    <%- include("./partials/head.ejs") %>
+
 <body>
+
+    <%- include("./partials/nav.ejs") %>
+
     <main>
-        <%= level.position %> - <%= level.name %>
-        <% completions[0].players.forEach((player) => { %>
-            <%= player.name %>
-        <% }); %>
+        <div id="level-content">
+            <header id="level-header">
+                <h2><%= level.position %> - <%= level.name %></h2>
+                <p><%= level.creator %> - <%= level.points %> points</p>
+            </header>
+
+            <section id="completions-card">
+                <h3><%= completions[0].players.length %> Records</h3>
+                <ul>
+                    <% completions[0].players.forEach((player) => { %>
+                        <li><%= player.name %></li>
+                    <% }); %>
+                </ul>
+            </section>
+        </div>
     </main>
 </body>
 </html>

@@ -29,6 +29,47 @@
     margin-left: 3px;
 }
 
+#level-content {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+#level-header {
+    text-align: center;
+    padding: 10px 50px;
+    border: 1px solid black;
+}
+
+#level-header h2 {
+    font-size: 3rem;
+}
+
+#completions-card {
+    margin-top: 5px;
+}
+
+#completions-card h3 {
+    font-size: 2rem;
+}
+
+#completions-card ul {
+    font-size: 1.5rem;
+}
+
+#completions-card li {
+    border-bottom: 1px solid black;
+    width: fit-content;
+    margin: 5px;
+    word-break: break-all;
+    text-align: center;
+    cursor: pointer;
+}
+
 .player-card {
     width: 500px;
     margin: 10px;
