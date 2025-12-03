@@ -1,0 +1,8 @@
+:root {
+    --primary-font: "Merriweather", sans-serif;
+    --primary-color: white;
+    --primary-text-color: black;
+    --font-size-base: 0.6rem;
+    --font-size-md: 0.9rem;
+    --font-size-lg: 1.6rem;
+}

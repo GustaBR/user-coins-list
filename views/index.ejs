@@ -13,9 +13,9 @@
                 <a href="/levels/<%= level._id %>">
                     <div class="level-card">
                         <h2><%= level.position %>. <%= level.name %>
-                            <span class="level-points"> <%= level.points %> points</span>
                         </h2>
-                        <p> <%= level.creator %> </p>
+                        <p class="level-creator"> <%= level.creator %> </p>
+                        <p class="level-points"><%= level.points %> points</p>
                     </div>
                 </a>
             <% }); %>
