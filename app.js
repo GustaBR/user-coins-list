@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 // Routes
 const levelRoutes = require("./routes/levelRoutes");
 const leaderboardRoutes = require("./routes/leaderboardRoutes");
+const playerRoutes = require("./routes/playerRoutes");
 
 const app = express();
 
@@ -29,8 +30,8 @@ mongoose.connect(db_URI)
   .catch((err) => console.log(err));
 
 app.use("/levels", levelRoutes);
-
 app.use("/leaderboard", leaderboardRoutes);
+app.use("/players", playerRoutes);
 
 app.get("/", (req, res) => {
     res.redirect("/levels");

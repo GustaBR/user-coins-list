@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <%- include("./partials/head.ejs") %>
+
+<body>
+    
+    <%- include("./partials/nav.ejs") %>
+
+    <main>
+        <div class="page-content">
+            <header class="page-header">
+                <h2><%= player.name %></h2>
+            </header>
+
+            <section class="page-section">
+                <ul>
+                    <h3><%= completions[0].levels.length %> Completions</h3>
+                    <% completions[0].levels.forEach((level) => { %>
+                        <a href="/levels/<%= level._id %>"><li><%= level.name %></li></a>
+                    <% }); %>
+                </ul>
+            </section>
+            
+        </div>
+    </main>
+</body>
+</html>

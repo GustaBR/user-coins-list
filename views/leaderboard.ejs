@@ -10,7 +10,7 @@
     <main>
         <% players.forEach((player) => { %>
             <div class="player-card">
-                <p><%= player.name %></p>
+                <a href="/players/<%= player.name %>"><p><%= player.name %></p></a>
             </div>
         <% }); %>
     </main>
