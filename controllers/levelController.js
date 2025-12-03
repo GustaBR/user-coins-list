@@ -1,5 +1,5 @@
 const Level = require("../models/Level");
-const completionServices = require("../services/completionServices");
+const completionService = require("../services/completionService");
 
 const getAllLevels = async (req, res) => {
     try {
@@ -13,7 +13,7 @@ const getAllLevels = async (req, res) => {
 const getLevel = async (req, res) => {
     try {
         const level = await Level.findById(req.params.id);
-        const completions = await completionServices.getCompletionsByLevel(level._id);
+        const completions = await completionService.getCompletionsByLevel(level._id);
         res.render("level", { level, completions });
     } catch (err) {
         console.error(err);
