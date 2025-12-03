@@ -26,7 +26,6 @@ async function getCompletionsByPlayer(playerId) {
             }, {
             $group: {
                 _id: "$player._id",
-                name: { $first: "$player.name" },
                 levels: { $push: "$level" }
                 }
             }
@@ -65,7 +64,7 @@ async function getCompletionsByLevel(levelId) {
             }, {
             $group: {
                 _id: "$level._id",
-                name: { $first: "$player.name" },
+                name: { $first: "$level.name" },
                 players: { $push: "$player" }
                 }
             }
