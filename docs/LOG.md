@@ -12,3 +12,11 @@
   - Created general purpose classes for page layout, which are now used for the player and level views.
 - Made every player and level related data displayed on pages clickable.
 - Added player view and API endpoint for GET requests with name parameter.
+
+# December 4, 2025
+- Made minor tweaks to CSS files to improve layout integrity on smaller screens.
+  - Headers of level and player pages were made smaller in size.
+  - Added "Player Info" as a header in place of the name of the player to prevent overflow.
+- Created the player service.
+  - The player service is used to compute player stats that depend on their completions, which are score and rank currently.
+- Added score and rank inside player pages.
