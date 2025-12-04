@@ -1,9 +1,9 @@
-const Player = require("../models/Player");
+const leaderboardService = require("../services/leaderboardService");
 
 const getLeaderboard = async (req, res) => {
     try {
-        const players = await Player.find();
-        res.render("leaderboard", { players });
+        const leaderboard = await leaderboardService.getLeaderboard();
+        res.render("leaderboard", { leaderboard });
     } catch (err) {
         console.error(err)
     }
