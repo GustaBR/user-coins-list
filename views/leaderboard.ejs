@@ -8,11 +8,26 @@
     <%- include("./partials/nav.ejs") %>
 
     <main>
-        <% players.forEach((player) => { %>
-            <div class="player-card">
-                <a href="/players/<%= player.name %>"><p><%= player.name %></p></a>
-            </div>
-        <% }); %>
+        <div class="page-content">
+            <header class="page-header">
+                <h2>Leaderboard</h2>
+            </header>
+        
+            <section class="page-section" id="leaderboard">
+                <% leaderboard.forEach((entry) => { %>
+                    <% player = entry.player %>
+                    <a href="/players/<%= player.name %>">
+                        <div class="player-card">
+                            <p class="player-rank">#<%= entry.rank %></p>
+                            <div class="player-info">
+                                <p class="player-name"><%= player.name %></p>
+                                <p class="player-points"><%= entry.points %> Points</p>
+                            </div>
+                        </div>
+                    </a>
+                <% }); %>
+            </section>
+        </div>
     </main>
 
 </body>

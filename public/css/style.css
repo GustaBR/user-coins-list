@@ -51,6 +51,7 @@
 
 .page-section {
     margin-top: 5px;
+    width: 100%;
 }
 
 .page-section h3 {
@@ -71,9 +72,35 @@
 }
 
 .player-card {
-    width: 500px;
-    margin: 10px;
-    text-align: center;
+    display: flex;
+    width: 100%;
+    gap: 5px;
+    justify-content: flex-start;
     border: 1px solid #444444;
-    padding: 5px 20px;
+    padding: 5px 5px;
+}
+
+.player-rank {
+    font-size: 1.9rem;
+    font-weight: 700;
+}
+
+.player-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.player-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.player-points {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+#leaderboard a {
+    display: block;
+    margin: 10px;
 }
