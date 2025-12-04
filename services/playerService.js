@@ -13,10 +13,10 @@ async function getPlayerStats(playerId) {
             }, { 
             $unwind: "$level"
             }, {
-            $group: { _id: "$player", score: { $sum: "$level.points" } }
+            $group: { _id: "$player", points: { $sum: "$level.points" } }
             }, {
             $setWindowFields: {
-                sortBy: { score: -1 },
+                sortBy: { points: -1 },
                 output: {
                     rank: { $rank: {} }
                     }
