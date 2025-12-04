@@ -20,3 +20,5 @@
 - Created the player service.
   - The player service is used to compute player stats that depend on their completions, which are score and rank currently.
 - Added score and rank inside player pages.
+- Added leaderboard services with player ordering logic.
+- Edited the layout of the Leaderboard page.

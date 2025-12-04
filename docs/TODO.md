@@ -1,3 +1,4 @@
 # TO-DO List
 **High Priority:**
-- Add the ordering logic to the leaderboard.
+- Refactor CSS for modularity and clarity.
+- Fix layout of player and level view.
