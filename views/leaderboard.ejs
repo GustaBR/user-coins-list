@@ -7,28 +7,28 @@
 
     <%- include("./partials/nav.ejs") %>
 
-    <main>
-        <div class="page-content">
-            <header class="page-header">
-                <h2>Leaderboard</h2>
-            </header>
+    <main class="flex-column">
+        <header class="page-header">
+            <h2>Leaderboard</h2>
+        </header>
         
-            <section class="page-section" id="leaderboard">
-                <% leaderboard.forEach((entry) => { %>
-                    <% player = entry.player %>
-                    <a href="/players/<%= player.name %>">
-                        <div class="player-card">
-                            <p class="player-rank">#<%= entry.rank %></p>
-                            <div class="player-info">
-                                <p class="player-name"><%= player.name %></p>
-                                <p class="player-points"><%= entry.points %> Points</p>
-                            </div>
+        <section class="leaderboard">
+            <% leaderboard.forEach((entry) => { %>
+                <% player = entry.player %>
+                <a class="player-card__link" href="/players/<%= player.name %>">
+                    <div class="card player-card">
+                        <div class="player-card__rank">#<%= entry.rank %></div>
+                        <div class="player-card__info" data-rank="<%= entry.rank %>">
+                            <div class="player-card__name"><%= player.name %>
+                            <img class="player-card__icon"></div>
+                            <div class="player-card__points"><%= entry.points %> Points</div>
                         </div>
-                    </a>
-                <% }); %>
-            </section>
-        </div>
+                    </div>
+                </a>
+            <% }); %>
+        </section>
     </main>
 
+    <script src="/js/leaderboard.js"></script>
 </body>
 </html>

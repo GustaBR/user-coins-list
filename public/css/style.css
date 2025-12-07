@@ -18,11 +18,6 @@
     font-size: 2rem;
 }
 
-.page-section {
-    margin-top: 5px;
-    width: 100%;
-}
-
 .page-section h3 {
     font-size: 2rem;
 }
@@ -38,38 +33,4 @@
     word-break: break-all;
     text-align: center;
     cursor: pointer;
-}
-
-.player-card {
-    display: flex;
-    width: 100%;
-    gap: 5px;
-    justify-content: flex-start;
-    border: 1px solid #444444;
-    padding: 5px 5px;
-}
-
-.player-rank {
-    font-size: 1.9rem;
-    font-weight: 700;
-}
-
-.player-info {
-    display: flex;
-    flex-direction: column;
-}
-
-.player-name {
-    font-size: 1.2rem;
-    font-weight: 700;
-}
-
-.player-points {
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
-#leaderboard a {
-    display: block;
-    margin: 10px;
 }

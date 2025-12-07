@@ -1,0 +1,51 @@
+main {
+    margin-top: 5px;
+}
+
+.page-header {
+    margin: 0px auto;
+    border-bottom: 1px solid black;
+}
+
+.leaderboard {
+    margin-top: 5px;
+}
+
+.player-card__link {
+    display: block;
+    margin: 10px;
+}
+
+.player-card {
+    display: flex;
+    width: 100%;
+    gap: 5px;
+    justify-content: flex-start;
+    padding: 5px 5px;
+}
+
+.player-card__rank {
+    font-size: 1.9rem;
+    font-weight: 700;
+}
+
+.player-card__info {
+    display: flex;
+    flex-direction: column;
+}
+
+.player-card__name {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.player-card__icon {
+    width: 1.3em;
+    height: auto;
+    vertical-align: middle;
+}
+
+.player-card__points {
+    font-size: 0.9rem;
+    font-weight: 500;
+}

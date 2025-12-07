@@ -3,7 +3,8 @@ const leaderboardService = require("../services/leaderboardService");
 const getLeaderboard = async (req, res) => {
     try {
         const leaderboard = await leaderboardService.getLeaderboard();
-        res.render("leaderboard", { leaderboard });
+        const pageCss = "leaderboard.css";
+        res.render("leaderboard", { leaderboard, pageCss });
     } catch (err) {
         console.error(err)
     }
