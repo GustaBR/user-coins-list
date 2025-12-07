@@ -1,34 +1,3 @@
-.level-card {
-    margin: 10px auto;
-    height: 100px;
-    width: 90%;
-    background-color: white;
-    border: 1px black solid;
-    padding: 5px 10px;
-    cursor: pointer;
-}
-
-.level-card:hover {
-    background-color: #dadada;
-}
-
-.level-card h2 {
-    font-size: 1.6rem;
-}
-
-.level-creator {
-    display: inline;
-    font-size: 0.9rem;
-    font-weight: 600;
-}
-
-.level-points {
-    display: inline;
-    font-size: 0.8rem;
-    font-weight: 500;
-    margin-left: 3px;
-}
-
 .page-content {
     display: flex;
     width: 100%;

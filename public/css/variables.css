@@ -6,3 +6,8 @@
     --font-size-md: 0.9rem;
     --font-size-lg: 1.6rem;
 }
+
+html[data-theme="dark-theme"] {
+    --primary-color: black;
+    --primary-text-color: white;
+}

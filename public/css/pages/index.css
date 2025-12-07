@@ -1,0 +1,35 @@
+.level-card__link {
+    flex: auto;
+    margin: 10px 20px
+}
+
+.level-card {
+    height: 100px;
+    background-color: var(--primary-color);
+    border: 1px var(--primary-text-color) solid;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+
+.level-card:hover {
+    background-color: #dadada;
+}
+
+.level-card__title {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.level-card__info {
+    display: inline;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.level-card__points {
+    display: inline;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-left: 6px;
+}

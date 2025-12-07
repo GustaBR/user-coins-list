@@ -7,16 +7,15 @@
 
     <%- include("./partials/nav.ejs") %>
 
-    <main> 
+    <main class="flex-column"> 
         <% if (levels.length > 0) { %>   
-            <% levels.forEach((level) => { %>  
-                <a href="/levels/<%= level._id %>">
-                    <div class="level-card">
-                        <h2><%= level.position %>. <%= level.name %>
-                        </h2>
-                        <p class="level-creator"> <%= level.creator %> </p>
-                        <p class="level-points"><%= level.points %> points</p>
-                    </div>
+            <% levels.forEach((level) => { %>
+                <a href="/levels/<%= level._id %>" class="level-card__link">
+                    <article class="card level-card">
+                        <div class="level-card__title"><%= level.position %>. <%= level.name %></div>
+                        <div class="level-card__info"><%= level.creator %><span class="level-card__points"><%= level.points %> Points </span>
+                        </div>
+                    </article>
                 </a>
             <% }); %>
         <% } %>

@@ -29,6 +29,12 @@ mongoose.connect(db_URI)
   .then(() => app.listen(PORT, () => console.log(`Server running on port ${PORT}`)))
   .catch((err) => console.log(err));
 
+// Default pageCss value middleware
+app.use((req, res, next) => {
+  res.locals.pageCss = null;
+  next();
+})
+
 app.use("/levels", levelRoutes);
 app.use("/leaderboard", leaderboardRoutes);
 app.use("/players", playerRoutes);

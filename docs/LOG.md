@@ -22,3 +22,6 @@
 - Added score and rank inside player pages.
 - Added leaderboard services with player ordering logic.
 - Edited the layout of the Leaderboard page.
+
+# December 7, 2025
+- Finished refactoring the CSS and HTML of the navbar component.

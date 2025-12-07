@@ -4,7 +4,8 @@ const completionService = require("../services/completionService");
 const getAllLevels = async (req, res) => {
     try {
         const levels = await Level.find();
-        res.render("index", { levels });
+        const pageCss = "index.css"
+        res.render("index", { levels, pageCss });
     } catch (err) {
         console.error(err);
     }
