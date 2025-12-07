@@ -1,6 +1,6 @@
-const navbarToggler = document.querySelector(".navbar-toggler-icon");
-const navbarExpand = document.querySelector(".navbar-expand");
+const navbarToggler = document.querySelector(".nav__toggler");
+const navbarExpand = document.querySelector(".nav__expand");
 
 navbarToggler.addEventListener("click", () => {
-    navbarExpand.classList.toggle("mobile-hidden");
+    navbarExpand.classList.toggle("nav__expand--active");
 });
