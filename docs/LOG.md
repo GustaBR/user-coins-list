@@ -25,3 +25,4 @@
 
 # December 7, 2025
 - Finished refactoring the CSS and HTML of the navbar component.
+- Finished refactoring the CSS and HTML of the index page (list view).
