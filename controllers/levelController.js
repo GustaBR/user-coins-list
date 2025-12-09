@@ -15,7 +15,8 @@ const getLevel = async (req, res) => {
     try {
         const level = await Level.findById(req.params.id);
         const completions = await completionService.getCompletionsByLevel(level._id);
-        res.render("level", { level, completions });
+        const pageCss = "level.css";
+        res.render("level", { level, completions, pageCss });
     } catch (err) {
         console.error(err);
     }

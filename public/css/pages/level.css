@@ -1,0 +1,40 @@
+.level-card {
+    width: 90%;
+    align-self: center;
+    text-align: center;
+    padding: 10px 0px;
+}
+
+.level-card__header {
+    text-align: center;
+}
+
+.level-card__header h2 {
+    font-size: 2rem;
+}
+
+.level-card__info {
+    font-size: 1rem;
+}
+
+.completions-section {
+    margin: 10px 0;
+    width: 90%;
+    align-self: center;
+}
+
+.completions-section h3 {
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+.completions-card {
+    padding: 5px 0;
+    font-size: 1.5rem;
+}
+
+.completions-card__entry {
+    width: fit-content;
+    margin: 0px auto;
+    border-bottom: 1px solid black;
+}

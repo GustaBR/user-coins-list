@@ -29,3 +29,6 @@
 - Finished refactoring the CSS and HTML of the Leaderboard page.
   - Also added trophy icons to the player cards.
 - Changed navbar position from static to fixed.
+
+# December 9, 2025
+- Finished refactoring the CSS and HTML of every page.

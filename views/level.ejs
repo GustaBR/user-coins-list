@@ -7,22 +7,27 @@
 
     <%- include("./partials/nav.ejs") %>
 
-    <main>
-        <div class="page-content">
-            <header class="page-header">
-                <h2><%= level.position %> - <%= level.name %></h2>
-                <p><%= level.creator %> - <%= level.points %> points</p>
+    <main class="flex-column">
+        <div class="card level-card">
+            <header class="level-card__header">
+                <h2>Level info:</h2>
             </header>
 
-            <section class="page-section">
-                <h3><%= completions[0].players.length %> Records</h3>
-                <ul>
-                    <% completions[0].players.forEach((player) => { %>
-                        <a href="/players/<%= player.name %>"><li><%= player.name %></li></a>
-                    <% }); %>
-                </ul>
-            </section>
+            <ul class="level-card__info">
+                <li><span class="bold">Position: </span>#<%= level.position %></li>
+                <li><span class="bold">Level: </span><%= level.name %></li>
+                <li><span class="bold">Creator: </span><%= level.creator %></li>
+                <li><span class="bold"><%= level.points %></span> Points</li>
+            </ul>
         </div>
+        <section class="completions-section">
+            <h3><%= completions[0].players.length %> Records</h3>
+            <ul class="card completions-card">
+                <% completions[0].players.forEach((player) => { %>
+                    <li class="completions-card__entry"><a href="/players/<%= player.name %>"><%= player.name %></a></li>
+                <% }); %>
+            </ul>
+        </section>
     </main>
 </body>
 </html>
