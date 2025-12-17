@@ -13,6 +13,8 @@ const completionSchema = new mongoose.Schema({
     }
 });
 
+completionSchema.index({level: 1, player: 1}, {unique: true});
+
 const Completion = mongoose.model("Completion", completionSchema);
 
 module.exports = Completion;
