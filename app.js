@@ -5,9 +5,8 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 
 // Routes
-const levelRoutes = require("./routes/levelRoutes");
-const leaderboardRoutes = require("./routes/leaderboardRoutes");
-const playerRoutes = require("./routes/playerRoutes");
+const webRoutes = require("./routes/web/index.js");
+const apiRoutes = require("./routes/api/index.js");
 
 const app = express();
 
@@ -35,10 +34,9 @@ app.use((req, res, next) => {
   next();
 })
 
-app.use("/levels", levelRoutes);
-app.use("/leaderboard", leaderboardRoutes);
-app.use("/players", playerRoutes);
+app.use("/", webRoutes);
+app.use("/api", apiRoutes);
 
 app.get("/", (req, res) => {
     res.redirect("/levels");
-})
+});
