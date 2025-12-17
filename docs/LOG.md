@@ -32,3 +32,11 @@
 
 # December 9, 2025
 - Finished refactoring the CSS and HTML of every page.
+
+# December 17, 2025
+- Finished the add new completion functionality on the admin area.
+- Split controllers and routes files into 2 subfolders.
+  - The api subfolder is used to return JSON back to the client.
+  - The web subfolder is used to render the EJS views.
+- Renamed the services folder to repositories for clarity. 
+These changes were made over the past few days and stayed uncommitted until today.
