@@ -1,5 +1,5 @@
 main {
-    padding-top: 20px;
+    padding-top: 10px;
 }
 
 .page-header {
@@ -38,14 +38,16 @@ main {
 }
 
 .player-card__name {
+    display: flex;
+    align-items: center;
     font-size: 1.2rem;
     font-weight: 700;
 }
 
 .player-card__icon {
-    width: 1.3em;
+    width: 1.2em;
     height: auto;
-    vertical-align: middle;
+    margin-left: 5px;
 }
 
 .player-card__points {
