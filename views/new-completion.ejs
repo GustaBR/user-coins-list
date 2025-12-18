@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <%- include("./partials/head.ejs") %>
+
+<body>
+
+    <%- include("./partials/nav.ejs") %>
+    
+    <ul class="admin-actions">
+        <li class="admin-actions__link"><a href="admin/new-completion">New completion</a></li>
+        <li class="admin-actions__link"><a href="admin/delete-completion">Delete completion</a></li>
+    </ul>
+
+    <main class="flex-column">
+
+        <header class="page-header">
+            <h2>New completion</h2>
+            <p>Add a new completion</p>
+        </header>
+
+        <form class="card form-card" id="completion-form">
+            <div class="form-card__field">
+                <label class="form-card__label" for="completion-player-input">Select a player</label>
+                <input class="form-card__input" type="text" id="completion-player-input" placeholder="Search...">
+                <div class="form-card__results" id="player-suggestions"></div>
+            </div>
+
+            <div class="form-card__field">
+                <label class="form-card__label" for="completion-level-input">Select a level</label>
+                <input class="form-card__input" type="text" id="completion-level-input" placeholder="Search...">
+                <div class="form-card__results" id="level-suggestions"></div>
+            </div>
+
+            <div class="form-card__actions">
+                <button class="form-card__button--confirm" type="button" id="completion-form-submit">Add completion</button>
+                <div class="hide alert" id="completion-form-alert"></div>
+            </div>
+        </form>
+
+    </main>
+
+    <script src="/js/admin/completions.js"></script>
+</body>
+</html>

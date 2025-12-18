@@ -2,9 +2,14 @@ const Player = require("../../models/Player");
 const Level = require("../../models/Level");
 const Completion = require("../../models/Completion");
 
-const renderAddCompletionPage = async (req, res) => {
+const renderAdminPage = async (req, res) => {
     const pageCss = "admin.css";
     res.render("admin", { pageCss });
+}
+
+const renderAddCompletionPage = async (req, res) => {
+    const pageCss = "completions.css";
+    res.render("new-completion", { pageCss });
 }
  
 const addCompletion = async (req, res) => {
@@ -35,6 +40,7 @@ const addCompletion = async (req, res) => {
 }
 
 module.exports = {
+    renderAdminPage,
     renderAddCompletionPage,
     addCompletion
 }

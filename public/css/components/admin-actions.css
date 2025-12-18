@@ -1,0 +1,12 @@
+.admin-actions {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.admin-actions__link {
+    width: fit-content;
+    border: 1px solid black;
+    border-radius: 5px 0 0 0;
+    padding: 3px 7px;
+}
