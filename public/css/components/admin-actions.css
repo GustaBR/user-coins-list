@@ -1,12 +1,21 @@
 .admin-actions {
     display: flex;
+    justify-content: space-around;
     flex-wrap: wrap;
-    margin-bottom: 10px;
+    margin: 0 5px 10px 5px;
 }
 
-.admin-actions__link {
+.admin-actions__action {
     width: fit-content;
     border: 1px solid black;
-    border-radius: 5px 0 0 0;
+    border-radius: 5px 5px 0 0;
     padding: 3px 7px;
+    font-family: var(--primary-font);
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.admin-actions__action--selected {
+    background-color: gray;
 }

@@ -77,7 +77,33 @@ async function getCompletionsByLevel(levelId) {
     }
 }
 
+async function getCompletionsByPlayerWithId(playerId) {
+    try {
+        const completions = await Completion.aggregate([
+            {
+            $match: { player: playerId }
+            }, {
+            $lookup: {
+                from: "levels",
+                localField: "level",
+                foreignField: "_id",
+                as: "level" }
+            }, {
+            $unwind: "$level"
+            }, {
+            $project: { _id: "$_id", name: "$level.name" }
+            }
+        ]);
+
+        return completions;
+
+    } catch (err) {
+        console.error(err);
+    }
+}
+
 module.exports = {
     getCompletionsByPlayer,
-    getCompletionsByLevel
+    getCompletionsByLevel,
+    getCompletionsByPlayerWithId
 }

@@ -13,7 +13,7 @@ const completionSchema = new mongoose.Schema({
     }
 });
 
-completionSchema.index({level: 1, player: 1}, {unique: true});
+completionSchema.index({player: 1, level: 1}, {unique: true});
 
 const Completion = mongoose.model("Completion", completionSchema);
 
