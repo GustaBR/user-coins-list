@@ -40,3 +40,12 @@
   - The web subfolder is used to render the EJS views.
 - Renamed the services folder to repositories for clarity. 
 These changes were made over the past few days and stayed uncommitted until today.
+
+# December 18, 2025
+- Added a button on the navbar that redirects to the admin area.
+- Added basic layout of the admin view.
+- Added navegation buttons for accessing different admin actions inside the admin area.
+- Made small aesthetical changes to the UI.
+
+# December 21, 2025
+- Finished the core functionality of the manage completions view (add and delete completions).
