@@ -49,3 +49,7 @@ These changes were made over the past few days and stayed uncommitted until toda
 
 # December 21, 2025
 - Finished the core functionality of the manage completions view (add and delete completions).
+
+# December 22, 2025.
+- Added improvements to the completion management screen UI.
+- Started working on the player management screen.
