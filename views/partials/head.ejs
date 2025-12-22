@@ -2,15 +2,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Coins List</title>
+    <% if (pageCss) { %>
+        <link rel="stylesheet" href="/css/pages/<%= pageCss %>">
+    <% } %>
     <link rel="stylesheet" href="/css/helpers.css">
     <link rel="stylesheet" href="/css/variables.css">
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/components/navbar.css">
     <link rel="stylesheet" href="/css/components/card.css">
     <link rel="stylesheet" href="/css/components/admin-actions.css">
-    <% if (pageCss) { %>
-        <link rel="stylesheet" href="/css/pages/<%= pageCss %>">
-    <% } %>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">

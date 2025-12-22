@@ -2,31 +2,26 @@ const state = {
     action: "add",
     players: [],
     playerSearch: "",
-    levels: [],
-    levelSearch: "",
     selectedPlayer: null,
-    selectedLevel: null
 }
 
 const headers = {
     add: {
-        title: "Add completion",
-        description: "Add a new completion"
+        title: "Add player",
+        description: "Add a new player"
     },
-    delete: {
-        title: "Delete completion",
-        description: "Delete an existing completion"
+    edit: {
+        title: "Edit player",
+        description: "Rename an existing player"
     }
 }
 
 const pageHeaderTitle = document.getElementById("page-header-title");
 const pageHeaderDescription = document.getElementById("page-header-description");
+const playerLabel = document.getElementById("player-label");
 const playerInput = document.getElementById("player-input");
-const levelInput = document.getElementById("level-input");
 const playerSuggestions = document.getElementById("player-suggestions");
-const levelSuggestions = document.getElementById("level-suggestions");
 const summaryPlayer = document.getElementById("summary-player");
-const summaryLevel = document.getElementById("summary-level");
 const submitButton = document.getElementById("form-submit");
 const formAlert = document.querySelector("#form-alert");
 
@@ -35,34 +30,23 @@ function matchPlayerSearch() {
     return state.players.filter(player => player.name.toLowerCase().includes(state.playerSearch.toLowerCase()));
 }
 
-function matchLevelSearch() {
-    state.levelSearch = levelInput.value;
-    return state.levels.filter(level => level.name.toLowerCase().includes(state.levelSearch.toLowerCase()));
-}
-
 playerInput.addEventListener("input", () => {
 
     formAlert.textContent = "";
 
     if (state.selectedPlayer && !matchPlayerSearch().find(player => player._id == state.selectedPlayer)) {
         state.selectedPlayer = null;
-        state.levels = [];
-        state.selectedLevel = null;
-        renderLevels();
     }
 
-    renderPlayers();
-});
-
-levelInput.addEventListener("input", () => {
-    
-    formAlert.textContent = "";
-
-    if (state.selectedLevel && !matchLevelSearch().find(level => level._id == state.selectedLevel)) {
-        state.selectedLevel = null;
+    switch (state.action) {
+        case "add":
+            summaryPlayer.innerHTML = `<span class="bold">Name:</span> ${playerInput.value}`;
+            break;
+        case "edit":
+            renderPlayers();
+        default:
+            break;
     }
-
-    renderLevels();
 });
 
 playerSuggestions.addEventListener("click", async (e) => {
@@ -73,41 +57,11 @@ playerSuggestions.addEventListener("click", async (e) => {
     state.selectedPlayer = selectedPlayer.dataset.playerId;
 
     renderPlayers();
-    await loadLevels();
-    renderLevels();
-});
-
-levelSuggestions.addEventListener("click", async (e) => {
-    const selectedLevel = e.target.closest(".form-card__suggestion");
-    if (!selectedLevel || (state.selectedLevel && state.selectedLevel === selectedLevel)) return;
-
-    formAlert.textContent = "";
-    state.selectedLevel = selectedLevel.dataset.levelId;
-
-    renderLevels();
 });
 
 async function loadPlayers() {
     const playersRes = await fetch("/api/players");
     state.players = await playersRes.json();
-}
-
-async function loadLevels() {
-    let levelsRes = null;
-
-    switch (state.action) {
-        case "add":
-            levelsRes = await fetch(`/api/players/${state.selectedPlayer}/uncompleted-levels`);
-            break;
-        case "delete":
-            levelsRes = await fetch(`/api/completions?player=${state.selectedPlayer}`);
-            break;
-        default:
-            showFormSubmissionMessage(`Invalid action: ${state.action}`);
-            break;
-    }
-
-    if (levelsRes) state.levels = await levelsRes.json();
 }
 
 function renderPlayers() {
@@ -132,35 +86,13 @@ function renderPlayers() {
     }
 }
 
-function renderLevels() {    
-    levelSuggestions.innerHTML = "";
-    summaryLevel.innerHTML = `<span class="bold">Level:</span> none`;
-    const levels = matchLevelSearch();
-
-    if (levels.length > 0) {
-        levels.forEach(level => {
-            const levelCard = document.createElement("div");
-            levelCard.setAttribute(`data-level-id`, level._id);
-            levelCard.classList.add("form-card__suggestion");
-            if (state.selectedLevel && level._id === state.selectedLevel) {
-                levelCard.classList.add("form-card__suggestion--selected");
-                summaryLevel.innerHTML = `<span class="bold">Level:</span> ${level.name}`;
-            }
-            levelCard.textContent = level.name;
-            levelSuggestions.appendChild(levelCard);
-        });
-    } else if (state.selectedPlayer) {
-        levelSuggestions.innerHTML = "No matching levels.";
-    }
-}
-
 function showFormSubmissionMessage(message) {
     formAlert.textContent = message;
 }
 
 const actionList = document.querySelectorAll(".admin-actions__action");
 actionList.forEach((action) => {
-    action.addEventListener("click", () => {
+    action.addEventListener("click", async () => {
         const selectedAction = document.getElementById("action-selected");
         selectedAction.removeAttribute("id");
         selectedAction.classList.remove("admin-actions__action--selected");
@@ -169,13 +101,22 @@ actionList.forEach((action) => {
 
         state.action = action.dataset.action;
         state.selectedPlayer = null;
-        state.levels = [];
-        state.selectedLevel = null;
-        submitButton.textContent = `${state.action} completion`;
+        submitButton.textContent = `${state.action} player`;
         formAlert.textContent = "";
+
+        if (state.action === "edit") {
+
+            if (state.players.length === 0) {
+                await loadPlayers();
+            }
+
+            playerSuggestions.classList.remove("hidden");
+            renderPlayers();
+        } else {
+            playerSuggestions.classList.add("hidden");
+        }
+
         updatePageHeader();
-        renderPlayers();
-        renderLevels();
     });
 });
 
@@ -238,20 +179,13 @@ completionFormBtn.addEventListener("click", async () => {
 
     switch (state.action) {
         case "add":
-            await addCompletion();
+            await addPlayer();
             break;
-        case "delete":
-            await deleteCompletion();
+        case "edit":
+            await editPlayer();
             break;
         default:
             showFormSubmissionMessage(`Invalid action: ${state.action}`);
             break;
     }
 });
-
-async function main() {
-    await loadPlayers();
-    renderPlayers();
-}
-
-main();

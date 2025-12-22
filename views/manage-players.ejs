@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <%- include("./partials/head.ejs") %>
+
+<body>
+
+    <%- include("./partials/nav.ejs") %>
+    
+    <div class="admin-actions">
+        <button class="admin-actions__action admin-actions__action--selected" data-action="add" id="action-selected">Add player</button>
+        <button class="admin-actions__action" data-action="edit">Edit player</button>
+    </div>
+
+    <main class="flex-column">
+
+        <header class="page-header">
+            <h2 id="page-header-title">Add player</h2>
+            <p id="page-header-description">Add a new player</p>
+        </header>
+
+        <form class="card form-card" id="form">
+            <fieldset class="form-card__field">
+                <label class="form-card__label" for="player-input" id="player-label">Specify a name</label>
+                <input class="form-card__input" type="text" id="player-input" placeholder="Name...">
+                <div class="form-card__results hidden" id="player-suggestions"></div>
+            </fieldset>
+
+            <section class="card summary-card">
+                <h3 class="summary-card__header">Player details</h3>
+                <div class="summary-card__data" id="summary-player"><span class="bold">Name:</span> none</div>
+            </section>
+
+            <div class="form-card__actions">
+                <button class="form-card__button--confirm" type="button" id="form-submit">Add player</button>
+                <div id="form-alert"></div>
+            </div>
+        </form>
+
+    </main>
+
+    <script src="/js/admin/manage-players.js"></script>
+</body>
+</html>

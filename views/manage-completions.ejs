@@ -19,22 +19,28 @@
             <p id="page-header-description">Add a new completion</p>
         </header>
 
-        <form class="card form-card" id="completion-form">
-            <div class="form-card__field">
+        <form class="card form-card" id="form">
+            <fieldset class="form-card__field">
                 <label class="form-card__label" for="player-input">Select a player</label>
                 <input class="form-card__input" type="text" id="player-input" placeholder="Search...">
                 <div class="form-card__results" id="player-suggestions"></div>
-            </div>
+            </fieldset>
 
-            <div class="form-card__field">
+            <fieldset class="form-card__field">
                 <label class="form-card__label" for="level-input">Select a level</label>
                 <input class="form-card__input" type="text" id="level-input" placeholder="Search...">
                 <div class="form-card__results" id="level-suggestions"></div>
-            </div>
+            </fieldset>
+
+            <section class="card summary-card hidden">
+                <h3 class="summary-card__header">Completion details</h3>
+                <div class="summary-card__data" id="summary-player"><span class="bold">Player:</span> none</div>
+                <div class="summary-card__data" id="summary-level"><span class="bold">Level:</span> none</div>
+            </section>
 
             <div class="form-card__actions">
                 <button class="form-card__button--confirm" type="button" id="form-submit">Add completion</button>
-                <div class="hide alert" id="form-alert"></div>
+                <div id="form-alert"></div>
             </div>
         </form>
 

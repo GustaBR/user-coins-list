@@ -3,12 +3,18 @@ const renderAdminPage = async (req, res) => {
     res.render("admin", { pageCss });
 }
 
-const renderAddCompletionPage = async (req, res) => {
-    const pageCss = "completions.css";
+const renderManageCompletionsPage = async (req, res) => {
+    const pageCss = "admin-manage.css";
     res.render("manage-completions", { pageCss });
+}
+
+const renderManagePlayersPage = async (req, res) => {
+    const pageCss = "admin-manage.css";
+    res.render("manage-players", { pageCss });
 }
 
 module.exports = {
     renderAdminPage,
-    renderAddCompletionPage,
+    renderManageCompletionsPage,
+    renderManagePlayersPage
 }
