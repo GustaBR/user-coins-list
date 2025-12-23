@@ -1,6 +1,6 @@
 # TO-DO List
 **High Priority:**
-- Finish the player management page.
+- Properly incorporate admin authetication into the UI.
 
 **Other tasks:**
 - Add newest completions to Database (preferably close to MVP launch).
