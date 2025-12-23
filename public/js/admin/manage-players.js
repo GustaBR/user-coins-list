@@ -20,6 +20,8 @@ const pageHeaderTitle = document.getElementById("page-header-title");
 const pageHeaderDescription = document.getElementById("page-header-description");
 const playerLabel = document.getElementById("player-label");
 const playerInput = document.getElementById("player-input");
+const nameField = document.getElementById("name-field");
+const nameInput = document.getElementById("name-input");
 const playerSuggestions = document.getElementById("player-suggestions");
 const summaryPlayer = document.getElementById("summary-player");
 const submitButton = document.getElementById("form-submit");
@@ -103,20 +105,29 @@ actionList.forEach((action) => {
         state.selectedPlayer = null;
         submitButton.textContent = `${state.action} player`;
         formAlert.textContent = "";
-
-        if (state.action === "edit") {
-
-            if (state.players.length === 0) {
-                await loadPlayers();
-            }
-
-            playerSuggestions.classList.remove("hidden");
-            renderPlayers();
-        } else {
-            playerSuggestions.classList.add("hidden");
-        }
-
         updatePageHeader();
+
+        switch (state.action) {
+            case "add":
+                playerLabel.textContent = "Specify a name";
+                playerSuggestions.classList.add("hidden");
+                nameField.classList.add("hidden");
+                break;
+            case "edit":
+                playerLabel.textContent = "Select a player";
+                playerSuggestions.classList.remove("hidden");
+                nameField.classList.remove("hidden");
+
+                if (state.players.length === 0) {
+                    await loadPlayers();
+                }
+
+                renderPlayers();
+                break;
+            default:
+                showFormSubmissionMessage(`Invalid action: ${state.action}`);
+                break;
+        }
     });
 });
 
@@ -125,17 +136,20 @@ function updatePageHeader() {
     pageHeaderDescription.textContent = headers[state.action].description;
 }
 
-async function addCompletion() {
+async function addPlayer() {
     try {
-        const player = state.selectedPlayer;
-        const level = state.selectedLevel;
+        const name = playerInput.value;
 
-        const res = await fetch("/api/admin/add-completion", {
+        if (name === "") {
+            showFormSubmissionMessage("Specify a name.");
+        }
+
+        const res = await fetch("/api/admin/add-player", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ player, level })
+            body: JSON.stringify({ name })
         });
         const data = await res.json();
 
@@ -148,15 +162,17 @@ async function addCompletion() {
     }
 }
 
-async function deleteCompletion() {
+async function editPlayer() {
     try {
-        const completionId = state.selectedLevel;
+        const playerId = state.selectedPlayer;
+        const name = nameInput.value;
 
-        const res = await fetch(`/api/admin/delete-completion/${completionId}`, {
-            method: "DELETE",
+        const res = await fetch(`/api/admin/edit-player/${playerId}`, {
+            method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
-            }
+            },
+            body: JSON.stringify({ name })
         });
         const data = await res.json();
 
@@ -172,10 +188,6 @@ async function deleteCompletion() {
 
 const completionFormBtn = document.querySelector("#form-submit");
 completionFormBtn.addEventListener("click", async () => {
-       
-    if (!state.selectedPlayer || !state.selectedLevel) {
-        return showFormSubmissionMessage("Select a player and a level.");
-    }
 
     switch (state.action) {
         case "add":

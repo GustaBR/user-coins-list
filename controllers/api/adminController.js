@@ -6,7 +6,7 @@ const addCompletion = async (req, res) => {
     try {
 
         if (!req.body.level || !req.body.player) {
-            return res.status(400).json({ message: "Missing level or player."});
+            return res.status(400).json({ message: "Missing level or player." });
         }
         
         const player = await Player.findById(req.body.player);
@@ -47,7 +47,49 @@ const deleteCompletion = async (req, res) => {
     }
 }
 
+const addPlayer = async (req, res) => {
+    try {
+
+        if (!req.body.name) {
+            return res.status(400).json({ message: "Missing name." });
+        }
+
+        const player = new Player({ name: req.body.name });
+
+        await player.save();
+
+        return res.status(201).json({ message: `Added new player: ${player.name}`});
+
+    } catch (err) {
+        if (err.code === 11000) {
+            return res.status(409).json({ message: "Player already exists." });
+        }
+
+        return res.status(500).json({ message: "Something went wrong." });
+    }
+}
+
+const editPlayer = async (req, res) => {
+    try {
+        if (!req.params.id || !req.body.name) {
+            return res.status(400).json({ message: "Missing player or new name." });
+        }
+
+        await Player.findByIdAndUpdate(req.params.id, { name: req.body.name });
+        
+        return res.status(200).json({ message: "Player renamed."});
+        
+    } catch (err) {
+        if (err.code === 11000) {
+            return res.status(409).json({ message: "Player already exists." });
+        }
+        return res.status(500).json({ message: "Something went wrong." });
+    }
+}
+
 module.exports = {
     addCompletion,
-    deleteCompletion
+    deleteCompletion,
+    addPlayer,
+    editPlayer
 }
