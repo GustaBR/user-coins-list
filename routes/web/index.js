@@ -6,7 +6,9 @@ const leaderboardRoutes = require("./leaderboardRoutes");
 const levelRoutes = require("./levelRoutes");
 const playerRoutes = require("./playerRoutes");
 
-router.use("/admin", adminRoutes);
+const { checkAdmin } = require("../../middleware/auth");
+
+router.use("/admin", checkAdmin, adminRoutes);
 router.use("/leaderboard", leaderboardRoutes);
 router.use("/levels", levelRoutes);
 router.use("/players", playerRoutes);
