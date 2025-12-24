@@ -8,6 +8,20 @@ navbarToggler.addEventListener("click", () => {
     adminForm.classList.add("hidden");
 });
 
-adminButton.addEventListener("click", () => {
-    adminForm.classList.toggle("hidden");
+adminButton.addEventListener("click", async () => {
+    try {
+        const data = await fetch("/check-login", { credentials: "include" });
+        const res = await data.json();
+
+        if (res.authenticated) {
+            window.location.href = "/admin";
+        } else {
+            adminForm.classList.remove("hidden");
+        }
+
+
+    } catch (err) {
+        console.error(err);
+        adminForm.classList.remove("hidden");
+    }
 })

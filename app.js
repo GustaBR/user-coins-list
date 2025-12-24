@@ -54,6 +54,15 @@ app.post("/login", (req, res) => {
     return res.status(401).send("Unauthorized");
 });
 
+// Authentication validation
+app.get("/check-login", (req, res) => {
+    if (req.cookies.key === process.env.ADMIN_KEY) {
+        res.json({ authenticated: true });
+    } else {
+        res.json({ authenticated: false });
+    }
+});
+
 app.use("/", webRoutes);
 app.use("/api", apiRoutes);
 
