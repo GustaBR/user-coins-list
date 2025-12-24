@@ -46,10 +46,13 @@ nav {
 }
 
 .nav__links li {
+    display: flex;
     width: 80%;
     height: 50px;
     border: 1px solid black;
     align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .nav__links a {
@@ -58,6 +61,27 @@ nav {
     justify-content: center;
     height: 100%;
     width: 100%;
+}
+
+.nav__links button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    border: none;
+    background-color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    cursor: pointer;
+}
+
+.nav__admin-form {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
 }
 
 .nav__expand {

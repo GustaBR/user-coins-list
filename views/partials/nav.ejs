@@ -7,12 +7,15 @@
     <ul class="nav__links nav__expand">
         <li><a href="/levels">Levels</a></li>
         <li><a href="/leaderboard">Leaderboard</a></li>
-        <li id="admin"><a href="/admin">Admin Area</a></li>
+        <li id="admin-button"><button type="button">Admin Area</button></li>
     </ul>
 
-    <form action="/login" method="POST">
-        <input name="key" type="password">
-        <button type="submit">Login</button>
+    <form id="admin-form" action="/login" method="POST" class="nav__admin-form hidden">
+        <p>Enter the admin area access key:</p>
+        <div>
+            <input name="key" type="password">
+            <button type="submit">Login</button>
+        </div>
     </form>
 </nav>
 
