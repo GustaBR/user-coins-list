@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <%- include("./partials/head.ejs") %>
+
+<body>
+
+    <%- include("./partials/nav.ejs") %>
+
+    <% let message; %>
+    <% if (code === 401) { %>
+        <% message = "Unauthorized" %>
+    <% } else if (code === 404) { %>
+        <% message = "Page not found" %>
+    <% } else if (code === 500) {  %>
+        <% message = "Internal error" %>
+    <% } %>
+
+    <main class="flex-column align-center">
+        <h2 class="error-code"><%= code %> <span class="message"><%= message %></span></h2>
+        <a class="link" href="/levels">Return to homepage</a>
+    </main>
+</body>
+</html>

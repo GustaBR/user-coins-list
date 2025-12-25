@@ -20,13 +20,19 @@
                 <li><span class="bold"><%= level.points %></span> Points</li>
             </ul>
         </div>
+
         <section class="completions-section">
+        <% if (completions.length === 0) { %>
+            <h3>0 Records</h3>
+            <p>No completions... for now.</p>
+        <% } else { %>
             <h3><%= completions[0].players.length %> Records</h3>
             <ul class="card completions-card">
                 <% completions[0].players.forEach((player) => { %>
                     <li class="completions-card__entry"><a href="/players/<%= player.name %>"><%= player.name %></a></li>
                 <% }); %>
             </ul>
+        <% } %>
         </section>
     </main>
 </body>

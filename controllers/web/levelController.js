@@ -16,9 +16,15 @@ const renderLevelPage = async (req, res) => {
         const level = await Level.findById(req.params.id);
         const completions = await completionRepository.getCompletionsByLevel(level._id);
         const pageCss = "level.css";
-        res.render("level", { level, completions, pageCss });
+        return res.render("level", { level, completions, pageCss });
     } catch (err) {
-        console.error(err);
+        pageCss = "error.css";
+
+        if (err.name === "CastError") {
+            return res.status(404).render("error", { code: 404, pageCss });
+        }
+
+        return res.status(500).render("error", { code: 500, pageCss });
     }
 }
 

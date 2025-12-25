@@ -8,10 +8,15 @@ const renderPlayerPage = async (req, res) => {
         const stats = await playerRepository.getPlayerStats(player._id);
         const completions = await completionRepository.getCompletionsByPlayer(player._id);
         const pageCss = "player.css";
-        res.render("player", { player, stats, completions, pageCss });
+        return res.render("player", { player, stats, completions, pageCss });
     } catch (err) {
-        console.error(err);
-        res.status(404).end();
+        pageCss = "error.css";
+
+        if (err.name === "TypeError") {
+            return res.status(404).render("error", { code: 404, pageCss });
+        }
+        
+        return res.status(500).render("error", { code: 500, pageCss });
     }
 }
 

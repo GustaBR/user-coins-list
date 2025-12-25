@@ -21,7 +21,6 @@ adminButton.addEventListener("click", async () => {
 
 
     } catch (err) {
-        console.error(err);
         adminForm.classList.remove("hidden");
     }
-})
+});

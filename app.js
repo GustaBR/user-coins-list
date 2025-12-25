@@ -40,7 +40,7 @@ app.use((req, res, next) => {
 // Login validation
 app.post("/login", (req, res) => {
     const key = req.body?.key;
-    if (!key) return res.status(400).send("Bad Request"); 
+    if (!key) return res.status(400).json({ message: "Bad Request" }); 
 
     if (key === process.env.ADMIN_KEY) {
         res.cookie("key", key, {
@@ -51,7 +51,8 @@ app.post("/login", (req, res) => {
         return res.redirect("/admin");
     }
     
-    return res.status(401).send("Unauthorized");
+    const pageCss = "error.css";
+    return res.status(401).render("error", { code: 401, pageCss } );
 });
 
 // Authentication validation
@@ -68,4 +69,9 @@ app.use("/api", apiRoutes);
 
 app.get("/", (req, res) => {
     res.redirect("/levels");
+});
+
+app.use("/", (req, res) => {
+    const pageCss = "error.css";
+    res.status(404).render("error", { code: 404, pageCss });
 });
