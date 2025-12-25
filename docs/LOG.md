@@ -57,3 +57,13 @@ These changes were made over the past few days and stayed uncommitted until toda
 # December 23, 2025
 - Finished the player management screen.
 - Added logic of authentication setup for admins.
+
+# December 24, 2025
+- Incorporated admin authentication flow into the UI.
+
+# December 25, 2025
+- Added error pages.
+- Added proper handling to edge cases across pages.
+  - Level pages with 0 completions are now rendered.
+  - Made word pluralization accurate across pages.
+- Made slight code improvements in some controller files.
