@@ -20,7 +20,7 @@
                         <div class="player-card__rank">#<%= entry.rank %></div>
                         <div class="player-card__info" data-rank="<%= entry.rank %>">
                             <div class="player-card__name"><%= player.name %><img class="player-card__icon"></div>
-                            <div class="player-card__points"><%= entry.points %> Points</div>
+                            <div class="player-card__points"><%= inflectedAmountString(entry.points, "Point") %></div>
                         </div>
                     </div>
                 </a>

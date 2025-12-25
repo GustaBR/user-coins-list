@@ -1,6 +1,7 @@
 const Player = require("../../models/Player");
 const completionRepository = require("../../repositories/completionRepository");
 const playerRepository = require("../../repositories/playerRepository");
+const { inflectedAmountString } = require("../../public/js/utils.js");
 
 const renderPlayerPage = async (req, res) => {
     try {
@@ -8,7 +9,7 @@ const renderPlayerPage = async (req, res) => {
         const stats = await playerRepository.getPlayerStats(player._id);
         const completions = await completionRepository.getCompletionsByPlayer(player._id);
         const pageCss = "player.css";
-        return res.render("player", { player, stats, completions, pageCss });
+        return res.render("player", { player, stats, completions, pageCss, inflectedAmountString });
     } catch (err) {
         pageCss = "error.css";
 
