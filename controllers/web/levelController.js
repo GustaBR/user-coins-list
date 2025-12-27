@@ -6,9 +6,9 @@ const renderAllLevelsPage = async (req, res) => {
     try {
         const levels = await Level.find();
         const pageCss = "index.css"
-        res.render("index", { levels, pageCss, inflectedAmountString });
+        res.status(200).render("index", { levels, pageCss, inflectedAmountString });
     } catch (err) {
-        console.error(err);
+        return res.status(500).render("error", { code: 500, pageCss });
     }
 }
 

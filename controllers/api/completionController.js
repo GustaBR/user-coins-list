@@ -16,7 +16,7 @@ const getCompletionsByPlayer = async (req, res) => {
         return res.status(200).json(completions);
 
     } catch (err) {
-        console.error(err);
+        return res.status(500).json({ message: "Something went wrong." });
     }
 }
 

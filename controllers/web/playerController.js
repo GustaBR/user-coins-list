@@ -9,7 +9,7 @@ const renderPlayerPage = async (req, res) => {
         const stats = await playerRepository.getPlayerStats(player._id);
         const completions = await completionRepository.getCompletionsByPlayer(player._id);
         const pageCss = "player.css";
-        return res.render("player", { player, stats, completions, pageCss, inflectedAmountString });
+        return res.status(200).render("player", { player, stats, completions, pageCss, inflectedAmountString });
     } catch (err) {
         pageCss = "error.css";
 

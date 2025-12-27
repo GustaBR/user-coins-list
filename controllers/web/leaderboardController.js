@@ -5,9 +5,9 @@ const renderLeaderboardPage = async (req, res) => {
     try {
         const leaderboard = await leaderboardRepository.getLeaderboard();
         const pageCss = "leaderboard.css";
-        res.render("leaderboard", { leaderboard, pageCss, inflectedAmountString });
+        res.status(200).render("leaderboard", { leaderboard, pageCss, inflectedAmountString });
     } catch (err) {
-        console.error(err)
+        return res.status(500).render("error", { code: 500, pageCss });
     }
 }
 
