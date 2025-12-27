@@ -4,6 +4,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
+const path = require("path");
 
 // Routes
 const webRoutes = require("./routes/web/index.js");
@@ -17,18 +18,19 @@ app.use(express.json());
 app.use(cors());
 
 // Middleware
-app.use(express.urlencoded());
-app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(process.cwd(), "public")));
 app.use(morgan("dev"));
 app.use(cookieParser());
 
 // Development variables
-const PORT = 3000;
-const db_URI = process.env.db_URI;
+const PORT = process.env.PORT || 3000
+const DB_URI = process.env.DB_URI;
+const isProd = process.env.NODE_ENV === "production";
 
 // Mongo connection
-mongoose.connect(db_URI)
-  .then(() => app.listen(PORT, () => console.log(`Server running on port ${PORT}`)))
+mongoose.connect(DB_URI)
+  .then(() => app.listen(PORT, () => console.log(`Server running on port ${PORT}. Environment: ${process.env.NODE_ENV}`)))
   .catch((err) => console.log(err));
 
 // Default pageCss value middleware
@@ -45,7 +47,8 @@ app.post("/login", (req, res) => {
     if (key === process.env.ADMIN_KEY) {
         res.cookie("key", key, {
             httpOnly: true,
-            maxAge: 60 * 1000
+            maxAge: 24 * 60 * 60 * 1000,
+            secure: isProd
         });
 
         return res.redirect("/admin");
