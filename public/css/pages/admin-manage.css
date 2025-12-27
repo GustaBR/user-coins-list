@@ -103,7 +103,7 @@
     font-size: 1rem;
     background-color: var(--primary-color);
     border: 1px solid black;
-    height: 30px;
+    height: max(fit-content, 30px);
     cursor: pointer;
 }
 

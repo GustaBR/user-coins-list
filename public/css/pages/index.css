@@ -1,6 +1,6 @@
 .level-card__link {
     flex: auto;
-    width: calc(100% - 10px);
+    width: calc(100% - 20px);
     align-self: center;
     margin: 5px 20px;
     max-width: 500px;
@@ -13,7 +13,6 @@
     padding: 5px 10px;
     cursor: pointer;
 }
-
 
 .level-card:hover {
     background-color: #dadada;

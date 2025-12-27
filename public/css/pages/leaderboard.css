@@ -30,6 +30,10 @@ main {
     padding: 5px 5px;
 }
 
+.player-card:hover {
+    background-color: #dadada;
+}
+
 .player-card__rank {
     font-size: 1.9rem;
     font-weight: 700;
