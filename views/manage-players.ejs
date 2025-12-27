@@ -26,19 +26,20 @@
                 <div class="form-card__results hidden" id="player-suggestions"></div>
             </fieldset>
 
-            <section class="card summary-card">
-                <h3 class="summary-card__header">Player details</h3>
-                <div class="summary-card__data" id="summary-player"><span class="bold">Name:</span> none</div>
-            </section>
-
             <fieldset class="form-card__field hidden" id="name-field">
                 <label class="form-card__label" for="name-input" id="name-label">Specify a new name</label>
                 <input class="form-card__input" type="text" id="name-input" placeholder="Name...">
             </fieldset>
 
+            <section class="card summary-card">
+                <h3 class="summary-card__header">Player details</h3>
+                <div class="summary-card__data" id="summary-player"><span class="bold">Name:</span> none</div>
+                <div class="summary-card__data hidden" id="summary-name"><span class="bold">New name:</span> none</div>
+            </section>
+
             <div class="form-card__actions">
-                <button class="form-card__button--confirm" type="button" id="form-submit">Add player</button>
                 <div id="form-alert"></div>
+                <button class="form-card__button--confirm" type="button" id="form-submit">Add player</button>
             </div>
         </form>
 

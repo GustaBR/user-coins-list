@@ -24,6 +24,7 @@ const nameField = document.getElementById("name-field");
 const nameInput = document.getElementById("name-input");
 const playerSuggestions = document.getElementById("player-suggestions");
 const summaryPlayer = document.getElementById("summary-player");
+const summaryName = document.getElementById("summary-name");
 const submitButton = document.getElementById("form-submit");
 const formAlert = document.querySelector("#form-alert");
 
@@ -42,13 +43,18 @@ playerInput.addEventListener("input", () => {
 
     switch (state.action) {
         case "add":
-            summaryPlayer.innerHTML = `<span class="bold">Name:</span> ${playerInput.value}`;
+            summaryPlayer.innerHTML = playerInput.value === "" ? `<span class="bold">Name:</span> none` : `<span class="bold">Name:</span> ${playerInput.value}`;
             break;
         case "edit":
             renderPlayers();
         default:
             break;
     }
+});
+
+nameInput.addEventListener("input", () => {
+    formAlert.textContent = "";
+    summaryName.innerHTML = nameInput.value === "" ? `<span class="bold">New name:</span> none` : `<span class="bold">New name:</span> ${nameInput.value}`;
 });
 
 playerSuggestions.addEventListener("click", async (e) => {
@@ -106,17 +112,24 @@ actionList.forEach((action) => {
         submitButton.textContent = `${state.action} player`;
         formAlert.textContent = "";
         updatePageHeader();
+        playerInput.value = "";
+        nameInput.value = "";
+        summaryName.innerHTML = `<span class="bold">New name:</span> none`;
+
 
         switch (state.action) {
             case "add":
                 playerLabel.textContent = "Specify a name";
                 playerSuggestions.classList.add("hidden");
                 nameField.classList.add("hidden");
+                summaryPlayer.innerHTML = `<span class="bold">Name:</span> none`;
+                summaryName.classList.add("hidden");
                 break;
             case "edit":
                 playerLabel.textContent = "Select a player";
                 playerSuggestions.classList.remove("hidden");
                 nameField.classList.remove("hidden");
+                summaryName.classList.remove("hidden");
 
                 if (state.players.length === 0) {
                     await loadPlayers();
@@ -166,6 +179,8 @@ async function editPlayer() {
     try {
         const playerId = state.selectedPlayer;
         const name = nameInput.value;
+
+        if (!playerId || !name) return showFormSubmissionMessage("Missing player or new name.");
 
         const res = await fetch(`/api/admin/edit-player/${playerId}`, {
             method: "PATCH",
