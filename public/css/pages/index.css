@@ -1,8 +1,9 @@
-
-
 .level-card__link {
     flex: auto;
-    margin: 5px 20px
+    width: calc(100% - 10px);
+    align-self: center;
+    margin: 5px 20px;
+    max-width: 500px;
 }
 
 .level-card {

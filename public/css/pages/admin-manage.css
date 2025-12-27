@@ -19,6 +19,7 @@
     margin: 10px;
     padding: 5px 20px 0px 20px;
     width: 90%;
+    max-width: 500px;
 }
 
 .form-card__field {

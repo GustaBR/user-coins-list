@@ -3,6 +3,7 @@
     align-self: center;
     text-align: center;
     padding: 10px 0px;
+    max-width: 500px;
 }
 
 .player-card__header {
@@ -21,6 +22,7 @@
     margin: 10px 0;
     width: 90%;
     align-self: center;
+    max-width: 500px;
 }
 
 .completions-section h3 {

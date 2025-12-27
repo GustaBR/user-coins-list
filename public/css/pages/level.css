@@ -3,6 +3,7 @@
     align-self: center;
     text-align: center;
     padding: 10px 0px;
+    max-width: 500px;
 }
 
 .level-card__header {
@@ -31,6 +32,8 @@
 .completions-card {
     padding: 5px 0;
     font-size: 1.5rem;
+    max-width: 500px;
+    margin: 0px auto;
 }
 
 .completions-card__entry {

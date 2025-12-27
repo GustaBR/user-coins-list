@@ -12,6 +12,9 @@ main {
 
 .leaderboard {
     margin-top: 5px;
+    margin: 0px auto;
+    max-width: 500px;
+    width: 100%;
 }
 
 .player-card__link {

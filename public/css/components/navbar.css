@@ -43,6 +43,9 @@ nav {
     font-size: 1.6rem;
     font-weight: 500;
     gap: 10px;
+    max-width: 400px;
+    align-self: center;
+    width: 100%;
 }
 
 .nav__links li {
