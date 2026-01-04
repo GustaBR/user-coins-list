@@ -67,3 +67,14 @@ These changes were made over the past few days and stayed uncommitted until toda
   - Level pages with 0 completions are now rendered.
   - Made word pluralization accurate across pages.
 - Made slight code improvements in some controller files.
+
+# December 27, 2025
+- Made some final improvements for MVP launch.
+  - Fixed an error in the UI of the player management screen which caused certain text elements to not update properly upon changing the current action.
+  - Added max-widths to elements that overstretched on large screens.
+  - Adjusted spacing and other minor visual aspects of certain pages.
+  - Added missing status codes and error handling to the API;
+- Deployed the MVP version of the app on Render.
+
+# January 4, 2026
+- Updated the README of the project.
