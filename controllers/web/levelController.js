@@ -4,10 +4,11 @@ const { inflectedAmountString } = require("../../public/js/utils.js");
 
 const renderAllLevelsPage = async (req, res) => {
     try {
-        const levels = await Level.find();
-        const pageCss = "index.css"
+        const levels = await Level.find().sort({position: 1});
+        const pageCss = "index.css";
         res.status(200).render("index", { levels, pageCss, inflectedAmountString });
     } catch (err) {
+        pageCss = "error.css";
         return res.status(500).render("error", { code: 500, pageCss });
     }
 }
